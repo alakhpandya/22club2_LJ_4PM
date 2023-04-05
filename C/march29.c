@@ -11,3 +11,21 @@ User can:-
 ◆LOGOUT will exit the user from the program
 You should use these functions in your program: login(), deposit(), withdraw(), checkBalance()
 */
+
+/*
+#include<stdio.h>
+int myFunc(){
+    int a[5] = {1,2,3,4,5};
+    return a[5];
+}
+int main()
+{
+    int b[5];
+    int i;
+    b[5] = myFunc();
+    for(i=0; i<5; i++){
+        printf("%d\n", b[i]);
+    }
+    return 0;
+}
+*/
