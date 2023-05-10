@@ -24,15 +24,42 @@ void updateBalance(int balance){
     fclose(fp);
 }
 void updateTransactions(int amount){
+    int old_transactions[100], i=0, j, num;
+    char c;
     FILE *fp;
-    fp = fopen("transactions.txt", "a");
-    fprintf(fp, "%d\n", amount);
+    // Reading all the data from file
+    fp = fopen("transactions.txt", "r");
+    fscanf(fp, "%d", &num);
+    while (num != 0){
+        printf("%d\n", num);
+        old_transactions[i] = num;
+        fscanf(fp, "%d", &num);
+        i++;
+    }
+    old_transactions[i] = amount;
+    fclose(fp);
+
+    // Printing the array
+    for(j = 0; j <= i; j++){
+        printf("%d\n", old_transactions[j]);
+    }
+
+    // saving back to the file
+    fp = fopen("transactions.txt", "w");
+    for(j = 0; j <= i; j++){
+        fprintf(fp, "%d\n", old_transactions[j]);
+    }
     fclose(fp);
 }
 void getLastTransaction(){
     FILE *fp;
     fp = fopen("transactions.txt", "r");
-    
+
+
+
+    // printf("\nCursor's current postion: %d\n", ftell(fp));
+    // fprintf(fp, "17000");
+    // printf("\nCursor's current postion: %d\n", ftell(fp));
     fclose(fp);
 }
 
@@ -81,6 +108,11 @@ int main()
             printf("Your current bill = %d\n", current_bill);
             break;
         
+        case 4:
+            printf("Last transaction:\n");
+            getLastTransaction();
+            break;
+
         case 9:
             exit(0);
 
