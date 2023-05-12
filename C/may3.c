@@ -23,31 +23,28 @@ void updateBalance(int balance){
     fprintf(fp, "%d", balance);
     fclose(fp);
 }
-void updateTransactions(int amount){
-    int old_transactions[100], i=0, j, num;
-    char c;
+void updateTransactions(int amount, int count){
+    int old_transactions[100], i=0, j=0, num=0;
     FILE *fp;
     // Reading all the data from file
     fp = fopen("transactions.txt", "r");
-    fscanf(fp, "%d", &num);
-    while (num != 0){
-        printf("%d\n", num);
-        old_transactions[i] = num;
-        fscanf(fp, "%d", &num);
-        i++;
+    for(i = 0; i < count; i++){
+        fscanf(fp, "%d", &old_transactions[i]);
+        fseek(fp, 1, SEEK_CUR);
     }
     old_transactions[i] = amount;
     fclose(fp);
 
     // Printing the array
-    for(j = 0; j <= i; j++){
+    printf("Array: ");
+    for(j = 0; j <= count+1; j++){
         printf("%d\n", old_transactions[j]);
     }
 
     // saving back to the file
     fp = fopen("transactions.txt", "w");
-    for(j = 0; j <= i; j++){
-        fprintf(fp, "%d\n", old_transactions[j]);
+    for(j = 0; j < count+1; j++){
+        fprintf(fp, "%d\n", old_transactions[count-j-1]);
     }
     fclose(fp);
 }
@@ -65,7 +62,7 @@ void getLastTransaction(){
 
 int main()
 {
-    int balance = 1000, amount, current_bill, op;
+    int balance = 1000, amount, current_bill, op, count_of_transactions = 0;
     FILE *fp;
     fp = fopen("account.txt", "r");
     // scanf("%d", &balance);
@@ -91,7 +88,8 @@ int main()
             balance += amount;
             printf("\nNew Balance = %d\n", balance);
             updateBalance(balance);
-            updateTransactions(amount);
+            count_of_transactions++;
+            updateTransactions(amount, count_of_transactions);
             break;
         
         case 2:
@@ -100,7 +98,9 @@ int main()
             balance -= amount;
             printf("\nNew Balance = %d\n", balance);
             updateBalance(balance);
-            updateTransactions(-amount);
+            count_of_transactions++;
+            amount = (-amount);
+            updateTransactions(amount, count_of_transactions);
             break;
         
         case 3:
