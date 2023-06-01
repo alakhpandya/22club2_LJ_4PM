@@ -24,14 +24,25 @@ ul{
 .btn:hover{
     background-color: #00a0d6;
 }
-
-nav{
+nav, .nav-mobile{
     background-color: #333;
+    height: 5rem;
+    padding: 0 2rem;
+}
+nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 5rem;
-    padding: 0 2rem;
+}
+.nav-mobile{
+    display: none;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.nav-upper{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
 }
 
 .nav-left, .nav-right{
@@ -48,4 +59,23 @@ nav{
 .nav-links, .nav-right-links{
     color: white;
     font-size: 1.2rem;
+}
+.nav-mobile-left{
+    margin-top: 1rem;
+}
+.nav-mobile-left li{
+    margin: 1.5rem 0;
+}
+.show-nav-mobile{
+    height: 28rem;
+}
+
+/* ---------------------- Media Queries ---------------------- */
+@media (max-width: 975px){
+    nav{
+        display: none;
+    }
+    .nav-mobile{
+        display: block;
+    }
 }
