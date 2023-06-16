@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Livvic:wght@500;600;700&family=Ubuntu:wght@300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+
+    --title-fonts: 'Livvic', sans-serif;
+    --normal-fonts: 'Ubuntu', sans-serif;
+
+    --black: #283618;
+    --dark-color1: #606c38;
+    --dark-color2: #bc6c25;
+    --light-color1: #dda15e;
+    --white: #fefae0;
+}
+/* -------------------- Global Styling -------------------- */
+body{
+    font-family: ubuntu, sans-serif;
+    background-color: var(--white);
+    color: var(--white);
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+}
+
+
+/* -------------------- Navbar -------------------- */
+nav{
+    background-color: var(--black);
+    height: 5rem;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.show-nav{
+    height: 11.5rem;
+}
+
+.nav-shrink{
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.nav-logo{
+    height: 3.5rem;
+}
+.bar-icon{
+    font-size: 1.6rem;
+}
+
+.nav-expand{
+    background-color: var(--dark-color1);
+    text-align: right;
+    padding: 0 30px;
+}
+.nav-expand li{
+    padding: 1rem 0;
+}
+.nav-expand li:nth-child(1){
+    border-bottom: solid 1px var(--black);
+}
+.nav-links{
+    color: var(--white);
+    position: relative;
+}
+.nav-links:hover{
+    color: var(--light-color1);
+}
+.border{
+    position: absolute;
+    transition: 0.2s;
+    background-color: var(--light-color1);
+}
+.border-left{
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    height: 0;
+}
+.border-bottom{
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+}
+.border-right{
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 0;
+}
+.border-top{
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+}
+.nav-links:hover .border-left{
+    height: 100%;
+}
+.nav-links:hover .border-bottom{
+    width: 100%;
+}
+.nav-links:hover .border-right{
+    height: 100%;
+}
+.nav-links:hover .border-top{
+    width: 100%;
+}
+
+
+
+
+/* -------------------- Media Queries -------------------- */
+
+@media (min-width: 750px){
+    .bar-icon{
+        display: none;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        padding-right: 30px;
+    }
+    .nav-expand{
+        background-color: var(--black);
+        text-align: right;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        gap: 1rem;
+    }
+    .nav-expand li:nth-child(1){
+        border-bottom: none;
+    }
+    .nav-links{
+        padding: 0.5rem 1.5rem;
+    }
+}
