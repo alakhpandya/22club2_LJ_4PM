@@ -124,6 +124,9 @@ nav{
     border-radius: 10px;
     padding: 1.5rem 10px 10px;
 }
+.signup-form-container{
+    max-width: 750px;
+}
 form{
     border: solid var(--light-color1);
     border-radius: 10px;
@@ -216,6 +219,9 @@ form{
 .form-links{
     color: var(--light-color1);
 }
+.signup-responsive > div{
+    width: 100%;
+}
 
 /* -------------------- Media Queries -------------------- */
 
@@ -241,7 +247,7 @@ form{
 @media (min-width: 750px){
     .bar-icon{
         display: none;
-    }
+    } 
     nav{
         display: flex;
         justify-content: space-between;
